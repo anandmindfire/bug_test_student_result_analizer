@@ -159,6 +159,3 @@ Focus on:
 ✔ Correctness
 ✔ Edge cases
 ✔ Mathematical accuracy
-✔ Clean state updates
-
-Just tell me what you want next 😎
