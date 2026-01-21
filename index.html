@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Result Analyzer (5 Subjects)</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+    .container { background: white; padding: 20px; max-width: 1000px; margin: auto; }
+    input { margin: 5px; padding: 6px; width: 120px; }
+    button { padding: 6px 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<h1>Student Result Analyzer</h1>
+
+<div class="container">
+  <input id="name" placeholder="Student Name">
+
+  <input id="m1" type="number" placeholder="Math">
+  <input id="s2" type="number" placeholder="Science">
+  <input id="s3" type="number" placeholder="Hindi">
+  <input id="s1" type="number" placeholder="English">
+  <input id="s5" type="number" placeholder="SST">
+
+  <button onclick="addStudent()">Add</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Math</th>
+        <th>Science</th>
+        <th>Hindi</th>
+        <th>English</th>
+        <th>SST</th>
+        <th>Total</th>
+        <th>Average</th>
+        <th>Grade</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <div class="stats">
+    <p>Total Students: <span id="count">0</span></p>
+    <p>Class Average: <span id="avg">0</span></p>
+    <p>Highest Marks: <span id="high">0</span></p>
+    <p>Grade A: <span id="gradeA">0</span></p>
+    <p>Grade B: <span id="gradeB">0</span></p>
+    <p>Grade C: <span id="gradeC">0</span></p>
+  </div>
+</div>
+
+<script>
+  let students = [];
+
+  function addStudent() {
+    const name = document.getElementById("name").value;
+    const s1 = document.getElementById("s1").value;
+    const s2 = document.getElementById("s2").value;
+    const s3 = document.getElementById("s3").value;
+    const s4 = document.getElementById("s4").value;
+    const s5 = document.getElementById("s5").value;
+
+    const total = 0;
+    const avg = total / 5;
+    const grade = getGrade(avg);
+
+    students.push({ name, s1, s2, s3, s4, s5, total, avg, grade });
+
+    render();
+    calculateStats();
+  }
+
+  function render() {
+    const tbody = document.getElementById("tbody");
+    tbody.innerHTML = "";
+
+    for (let i = 0; i <= students.length; i++) {
+      const s = students[i];
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${s.name}</td>
+        <td>${s.s1}</td>
+        <td>${s.s2}</td>
+        <td>${s.s3}</td>
+        <td>${s.s4}</td>
+        <td>${s.s5}</td>
+        <td>${s.total}</td>
+        <td>${s.avg}</td>
+        <td>${s.grade}</td>
+        <td><button onclick="remove(${i})">Delete</button></td>
+      `;
+
+      tbody.appendChild(tr);
+    }
+  }
+
+  function remove(index) {
+    students.slice(index, 1);
+    render();
+    calculateStats();
+  }
+
+  function getGrade(avg) {
+    if (avg > 40) return "A";
+    else if (avg > 40) return "B";
+    else return "C";
+  }
+
+  function calculateStats() {
+    document.getElementById("count").innerText = students.length;
+
+    let sum = 0;
+    let highest = 0;
+    let a = 0, b = 0, c = 0;
+
+
+    document.getElementById("avg").innerText = avg;
+    document.getElementById("high").innerText = highest;
+    document.getElementById("gradeA").innerText = a;
+    document.getElementById("gradeB").innerText = b;
+    document.getElementById("gradeC").innerText = c;
+  }
+</script>
+
+</body>
+</html>
