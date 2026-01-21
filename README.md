@@ -4,7 +4,7 @@
 
 This project is a **frontend debugging and logic assessment challenge** built using **HTML, CSS, and Vanilla JavaScript**.
 
-Candidates are provided with a partially functional **Student Result Analyzer** application that contains **15+ intentional bugs**. The goal is to **identify, debug, and fix** all issues within a limited time.
+Candidates are provided with a partially functional **Student Result Analyzer** application that contains **intentional bugs**. The goal is to **identify, debug, and fix** all issues within a limited time.
 
 This test evaluates:
 
